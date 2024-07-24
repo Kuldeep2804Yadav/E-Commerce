@@ -1,0 +1,23 @@
+.footer{
+    margin-top: 30px;
+    height: 100px;
+    width: 100%;
+    background-color: skyblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.social-media{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.social-media a img{
+    height:40px;
+    width: 40px;
+    margin-left: 60px;
+}
+.footer h1{
+    font-size: 50px;
+    font-weight: bolder;
+}

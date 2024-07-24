@@ -1,0 +1,11 @@
+.heading {
+    height: 200px;
+    width: 100%;
+    background-color: gray;
+    text-align: center;
+    border-top: 2px solid white;
+  }
+  .heading h1 {
+    font-size: 90px;
+  }
+  

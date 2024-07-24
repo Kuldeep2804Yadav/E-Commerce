@@ -1,0 +1,27 @@
+.navbar {
+  height: 40px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar ul {
+  margin: auto;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.navbar button {
+    margin-right: 30px;
+  height: 25px;
+  color: white;
+  width: fit-content;
+  background-color: black;
+  border: 2px solid blue;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
