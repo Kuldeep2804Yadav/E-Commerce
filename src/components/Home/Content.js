@@ -7,10 +7,10 @@ function Content(props) {
   return (
     <div className="content">
       <h4>{name}</h4>
-      <img src={img}/>
+      <img src={img} alt="profile"/>
       <div className="price-button">
         <p>${price}</p>
-        <Button title="Add To Cart"></Button>
+        <Button title="Add to Cart " className="bg-primary"></Button>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 .navbar {
   height: 40px;
   width: 100%;
+  position: fixed;
   background-color: black;
   color: white;
   display: flex;

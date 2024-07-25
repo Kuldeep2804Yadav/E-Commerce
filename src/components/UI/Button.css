@@ -1,6 +1,5 @@
 .button{
     height: 30px;
     width: fit-content;
-    background: skyblue;
-    border: none;
+    background-color: skyblue;
 }

@@ -54,7 +54,7 @@ function Home() {
         <h1>Music</h1>
         <div className="content-div">
           {Data.map((data) => {
-            return <Content contentData={data} />;
+            return <Content  key ={data.id}contentData={data} />;
           })}
         </div>
       </div>
@@ -62,12 +62,13 @@ function Home() {
         <h1>Merch</h1>
         <div className="content-div">
           {merch.map((data) => {
-            return <Content contentData={data} />;
+            return <Content key={data.id} contentData={data} />;
           })}
         </div>
-        <Button title="See The Cart" className="see-Cart"></Button>
+        <Button title="See The Cart" className="see-Cart text-white"></Button>
       </div>
       <Footer/>
+      
       
     </div>
   );
