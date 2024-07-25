@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Content.css";
-import Button from "../UI/Button";
+import { Context } from "../ContextApi/Context";
 
 function Content(props) {
-  const {name,img,price}=props.contentData;
+  const{addToCart}=useContext(Context)
+  const { title, imageUrl, price } = props.contentData;
+ 
+  const handleAddToCart = () => {
+    addToCart(props.contentData);
+  };
+ 
+
+
   return (
     <div className="content">
-      <h4>{name}</h4>
-      <img src={img} alt="profile"/>
+      <h4>{title}</h4>
+      <img src={imageUrl} alt="profile" />
       <div className="price-button">
         <p>${price}</p>
-        <Button title="Add to Cart " className="bg-primary"></Button>
+        <button className="bg-primary" onClick={handleAddToCart}>
+          Add to Cart
+        </button>
       </div>
     </div>
   );

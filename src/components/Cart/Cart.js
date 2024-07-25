@@ -1,51 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Cart.css";
+import { Context } from "../ContextApi/Context";
 
 const Cart = (props) => {
-  const cartElements = [
-    {
-      title: "Colors",
+  const { CartData,totalAmount } = useContext(Context);
 
-      price: 100,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-      quantity: 2,
-    },
-
-    {
-      title: "Black and white Colors",
-
-      price: 50,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-      quantity: 3,
-    },
-
-    {
-      title: "Yellow and Black Colors",
-
-      price: 70,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-      quantity: 1,
-    },
-  ];
-
-  const cartCloseHandler=()=>{
+  const cartCloseHandler = () => {
     props.setCartOpen(false);
-    
-  }
+  };
 
   return (
     <div className="cart">
       <div>
-        <button className="close-button" onClick={cartCloseHandler}>X</button>
+        <button className="close-button" onClick={cartCloseHandler}>
+          X
+        </button>
         <h1 className="cart-title">Cart</h1>
       </div>
 
@@ -55,7 +24,7 @@ const Cart = (props) => {
         <span>QUANTITY</span>
       </div>
       <div className="cart-content">
-        {cartElements.map((data, index) => (
+        {CartData.map((data, index) => (
           <div key={index} className="cart-item">
             <div className="item">
               <img src={data.imageUrl} alt={data.title} />
@@ -71,7 +40,7 @@ const Cart = (props) => {
       </div>
       <div className="cart-total">
         <span>Total : </span>
-        <span>{0}</span>
+        <span>{totalAmount}</span>
       </div>
       <button className="purchase-button">PURCHASE</button>
     </div>
