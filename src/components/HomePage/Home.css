@@ -5,17 +5,24 @@
 .tr {
   padding: 10px;
 }
-.table{
-    height: 300px;
-    width: 600px;
-    margin: auto;
+.table {
+  height: 300px;
+  width: 600px;
+  margin: auto;
 }
 
 .loader-center {
-margin-top: 50%;
-margin-left: 80%;
-margin-right: 50%;
-margin-bottom: 50%;
- 
- 
+  margin-top: 50%;
+  margin-left: 80%;
+  margin-right: 50%;
+  margin-bottom: 50%;
+}
+.Not-Found {
+  height: 30px;
+  width: max-content;
+  margin-top: 50%;
+  margin-left: 80%;
+  margin-right: 50%;
+  margin-bottom: 50%;
+  font-weight: bolder;
 }

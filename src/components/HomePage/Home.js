@@ -5,21 +5,38 @@ import "./Home.css";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setSetLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [retry, setRetry] = useState(null);
 
   const fetchMoviesData = async () => {
-    setSetLoading(true);
+    setLoading(true);
+    setError(null);
     try {
-      const data = await fetch("https://swapi.dev/api/films");
+      const data = await fetch("https://swapi.dev/api/film");
+      if (!data.ok) {
+        throw new Error("Something Went Wrong....");
+      }
+
       const jsonData = await data.json();
 
       setMovies(jsonData?.results);
-      setSetLoading(false);
+      setLoading(false);
     } catch (error) {
-      console.log(error);
+      setError(error.message);
+      setLoading(false);
+      setRetry(true)
     }
   };
+  const retryHandler = () => {
+    setTimeout(() => {
+      fetchMoviesData();
+    }, 5000);
+  };
 
+  const cancelRetryHandler = () => {
+    setRetry(false);
+  };
   return (
     <div>
       <Heading />
@@ -42,6 +59,17 @@ const Home = () => {
               <Loader />
             </div>
           )}
+
+          <div className="Not-Found">
+            {!loading && movies.length === 0 && <div>No Movies Found</div>}
+            {!loading && error && <div>{error}</div>}
+            {retry && (
+              <div>
+                <button onClick={retryHandler}>Retrying</button>
+                <button onClick={cancelRetryHandler}>Cancel</button>
+              </div>
+            )}
+          </div>
 
           {!loading && (
             <tbody>
