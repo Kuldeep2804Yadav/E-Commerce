@@ -1,25 +1,34 @@
 import React, { useState } from "react";
 import "./Header.css";
-import {Navbar } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 import Cart from "../Cart/Cart";
-
+import { NavLink } from "react-router-dom";
+import Heading from "../Home/Heading";
 
 function Header() {
-  const [cartOpen,setCartOpen]= useState(false);
-  const cartHandler=()=>{
+  const [cartOpen, setCartOpen] = useState(false);
+  const cartHandler = () => {
     setCartOpen(true);
-  }
+  };
   return (
-    <Navbar className="navbar ">
-      <ul>
-        <li>HOME</li>
-        <li>STORE</li>
-        <li>ABOUT</li>
-      </ul>
-      <button onClick={cartHandler}> Cart</button>
-      {cartOpen && <Cart setCartOpen={setCartOpen}/>}
-     
-    </Navbar>
+    
+      <Navbar className="navbar ">
+        <ul>
+          <li>
+            <NavLink>HOME</NavLink>
+          </li>
+          <li>
+            <NavLink>SHOP</NavLink>
+          </li>
+          <li>
+            <NavLink to="./about">ABOUT</NavLink>
+          </li>
+        </ul>
+        <button onClick={cartHandler}> Cart</button>
+        {cartOpen && <Cart setCartOpen={setCartOpen} />}
+      </Navbar>
+      
+    
   );
 }
 

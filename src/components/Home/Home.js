@@ -9,7 +9,7 @@ function Home() {
   const {musicData,merch} = useContext(Context);
   return (
     <div className="home">
-      <Heading />
+      
       <div className="music">
         <h1>Music</h1>
         <div className="content-div">
