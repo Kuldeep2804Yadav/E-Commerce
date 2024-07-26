@@ -4,10 +4,11 @@ import { Context } from "../ContextApi/Context";
 
 function Content(props) {
   const{addToCart}=useContext(Context)
-  const { title, imageUrl, price } = props.contentData;
+  const { title, imageUrl, price ,setCartCount,cartCount} = props.contentData;
  
   const handleAddToCart = () => {
     addToCart(props.contentData);
+    
   };
  
 

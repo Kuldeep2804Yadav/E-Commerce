@@ -3,10 +3,14 @@ import "./Cart.css";
 import { Context } from "../ContextApi/Context";
 
 const Cart = (props) => {
-  const { CartData,totalAmount } = useContext(Context);
+  const { cartData, totalAmount, removeFromCart,cartCount} = useContext(Context);
 
   const cartCloseHandler = () => {
     props.setCartOpen(false);
+  };
+
+  const removeProducts = (id) => {
+    removeFromCart(id);
   };
 
   return (
@@ -24,23 +28,24 @@ const Cart = (props) => {
         <span>QUANTITY</span>
       </div>
       <div className="cart-content">
-        {CartData.map((data, index) => (
+        {cartData.map((data, index) => (
           <div key={index} className="cart-item">
             <div className="item">
               <img src={data.imageUrl} alt={data.title} />
               <p>{data.title}</p>
             </div>
-            <div className="price">{data.price}</div>
+            <div className="price">${data.price}</div>
             <div className="quantity">
               <input type="number" value={data.quantity} readOnly />
-              <button className="remove-button">Remove</button>
+              <button className="remove-button" onClick={() => removeProducts(data.id)}>Remove</button>
+              
             </div>
           </div>
         ))}
       </div>
       <div className="cart-total">
         <span>Total : </span>
-        <span>{totalAmount}</span>
+        <span>${totalAmount}</span>
       </div>
       <button className="purchase-button">PURCHASE</button>
     </div>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Heading from "./Heading";
+
 import Content from "./Content";
-import "./Home.css";
+import "./Store.css";
 import Button from "../UI/Button";
 import Footer from "../Footer/Footer";
 import { Context } from "../ContextApi/Context";

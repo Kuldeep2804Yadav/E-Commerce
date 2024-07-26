@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Header.css";
 import { Navbar } from "react-bootstrap";
 import Cart from "../Cart/Cart";
 import { NavLink } from "react-router-dom";
-import Heading from "../Home/Heading";
+import { Context } from "../ContextApi/Context";
 
 function Header() {
   const [cartOpen, setCartOpen] = useState(false);
+  const {cartCount}=useContext(Context)
   const cartHandler = () => {
     setCartOpen(true);
   };
@@ -18,13 +19,16 @@ function Header() {
             <NavLink>HOME</NavLink>
           </li>
           <li>
-            <NavLink>SHOP</NavLink>
+            <NavLink to={"./"}>SHOP</NavLink>
           </li>
           <li>
             <NavLink to="./about">ABOUT</NavLink>
           </li>
+          
         </ul>
+        
         <button onClick={cartHandler}> Cart</button>
+        <span className="text-white">{cartCount}</span>
         {cartOpen && <Cart setCartOpen={setCartOpen} />}
       </Navbar>
       

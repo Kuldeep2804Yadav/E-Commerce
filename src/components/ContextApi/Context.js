@@ -7,37 +7,26 @@ export const ContextProvider = (props) => {
     {
       id: 1,
       title: "Colors",
-
       price: 100,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
     },
-
     {
       id: 2,
       title: "Black and white Colors",
       price: 50,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
     },
-
     {
       id: 3,
       title: "Yellow and Black Colors",
       price: 70,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
     },
-
     {
       id: 4,
       title: "Blue Color",
-
       price: 100,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
     },
   ];
 
@@ -46,23 +35,23 @@ export const ContextProvider = (props) => {
       id: 1,
       title: "T-Shirt",
       price: 19.99,
-      imageUrl:
-        "https://yourdesignstore.s3.amazonaws.com/uploads/yds/productImages/full/17155845641871Main-Product-Image-1-1.png",
+      imageUrl: "https://yourdesignstore.s3.amazonaws.com/uploads/yds/productImages/full/17155845641871Main-Product-Image-1-1.png",
     },
     {
       id: 2,
       title: "Coffee",
       price: 19.99,
-      imageUrl:
-        "https://www.nescafe.com/mena/sites/default/files/2023-08/Coffee%20Types%20Banner%20Desktop.jpg",
+      imageUrl: "https://www.nescafe.com/mena/sites/default/files/2023-08/Coffee%20Types%20Banner%20Desktop.jpg",
     },
   ];
+
+  const [cartData, setCartData] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [cartCount,setCartCount]= useState(0);
+
   const addToCart = (product) => {
     setCartData((prevCart) => {
-      const existingProductIndex = prevCart.findIndex(
-        (item) => item.id === product.id
-      );
+      const existingProductIndex = prevCart.findIndex(item => item.id === product.id);
       if (existingProductIndex !== -1) {
         const updatedCart = [...prevCart];
         updatedCart[existingProductIndex].quantity += 1;
@@ -71,18 +60,46 @@ export const ContextProvider = (props) => {
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
-   setTotalAmount((totalAmount)=>totalAmount+product.price)
+
+    setTotalAmount((prevAmount) => prevAmount + product.price);
+    setCartCount((cartCount)=>cartCount+1)
   };
 
-  const [CartData, setCartData] = useState([]);
+  const removeFromCart = (productId) => {
+    setCartData((prevCart) => {
+      const existingProductIndex = prevCart.findIndex(item => item.id === productId);
+      if (existingProductIndex !== -1) {
+        const updatedCart = [...prevCart];
+        const product = updatedCart[existingProductIndex];
+        if (product.quantity > 1) {
+          product.quantity -= 1;
+        } else {
+          updatedCart.splice(existingProductIndex, 1);
+        }
+        return updatedCart;
+      }
+      return prevCart;
+    });
+
+    setTotalAmount((prevAmount) => {
+      const product = cartData.find(item => item.id === productId);
+      return product ? prevAmount - product.price : prevAmount;
+    });
+    setCartCount((cartCount)=>cartCount-1)
+  };
+
   return (
     <Context.Provider
       value={{
         musicData: productsArr,
         merch: merch,
-        CartData: CartData,
+        cartData: cartData,
+        cartCount:cartCount,
         addToCart: addToCart,
-        totalAmount:totalAmount
+        removeFromCart: removeFromCart,
+        totalAmount: totalAmount,
+        setCartCount:setCartCount
+
       }}
     >
       {props.children}
