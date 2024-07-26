@@ -3,14 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
-  BrowserRouter,
+  
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import App from "./App";
 import { ContextProvider } from "./components/ContextApi/Context";
-import Store from "./components/Home/Store";
 import About from "./components/About/About";
+import Store from "./components/Store/Store";
+import Home from "./components/HomePage/Home";
 
 const router = createBrowserRouter([
   {
@@ -22,8 +23,12 @@ const router = createBrowserRouter([
     ),
     children:[
       {
+        path:"/home",
+        element:<Home/>
+      },
+      {
         path:"/",
-        element:<Store />
+        element:<Store/>
       },
       {
         path:"/about",

@@ -19,7 +19,7 @@ function Content(props) {
       <img src={imageUrl} alt="profile" />
       <div className="price-button">
         <p>${price}</p>
-        <button className="bg-primary" onClick={handleAddToCart}>
+        <button className="bg-primary border-white" onClick={handleAddToCart}>
           Add to Cart
         </button>
       </div>

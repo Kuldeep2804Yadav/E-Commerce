@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
 
-import Content from "./Content";
+import Content from "../Home/Content";
 import "./Store.css";
 import Button from "../UI/Button";
 import Footer from "../Footer/Footer";
 import { Context } from "../ContextApi/Context";
-function Home() {
-  const {musicData,merch} = useContext(Context);
+import Heading from "../Home/Heading";
+function Store() {
+  const { musicData, merch } = useContext(Context);
   return (
     <div className="home">
-      
+      <Heading />
+
       <div className="music">
         <h1>Music</h1>
         <div className="content-div">
@@ -32,4 +34,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Store;

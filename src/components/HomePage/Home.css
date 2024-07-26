@@ -1,0 +1,12 @@
+
+.home h1{
+    text-align: center;
+}
+.home table{
+    height: 300px;
+    width: 600px;
+    text-align: center;
+}
+.tr {
+    padding: 10px;
+}
