@@ -1,28 +1,68 @@
-.home h1 {
+/* Home.css */
+
+.container {
+  margin-top: 20px;
+}
+
+.text-center {
   text-align: center;
 }
 
-.tr {
-  padding: 10px;
+.loader-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }
+
+.Not-Found {
+  text-align: center;
+  margin: 20px 0;
+}
+
 .table {
-  height: 300px;
   width: 600px;
+  height: 400px;
   margin: auto;
 }
 
-.loader-center {
-  margin-top: 50%;
-  margin-left: 80%;
-  margin-right: 50%;
-  margin-bottom: 50%;
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
 }
-.Not-Found {
-  height: 30px;
-  width: max-content;
-  margin-top: 50%;
-  margin-left: 80%;
-  margin-right: 50%;
-  margin-bottom: 50%;
-  font-weight: bolder;
+
+th {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #ddd;
+}
+
+.btn {
+  padding: 8px 16px;
+  margin: 4px 0;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }

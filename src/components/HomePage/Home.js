@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Heading from "../Home/Heading";
 import Loader from "../UI/Loader";
 import "./Home.css";
@@ -7,27 +7,30 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [retry, setRetry] = useState(null);
+  const [retry, setRetry] = useState(false);
 
-  const fetchMoviesData = async () => {
+  const fetchMoviesData = useCallback(async () => {
     setLoading(true);
     setError(null);
+    setRetry(false);
     try {
-      const data = await fetch("https://swapi.dev/api/film");
+      const data = await fetch("https://swapi.dev/api/films");
       if (!data.ok) {
-        throw new Error("Something Went Wrong....");
+        throw new Error("Something went wrong...");
       }
-
       const jsonData = await data.json();
-
-      setMovies(jsonData?.results);
-      setLoading(false);
+      setMovies(jsonData.results);
     } catch (error) {
       setError(error.message);
-      setLoading(false);
-      setRetry(true)
+      setRetry(true);
     }
-  };
+    setLoading(false);
+  },[]);
+
+  useEffect(() => {
+    fetchMoviesData();
+  }, [fetchMoviesData]);
+
   const retryHandler = () => {
     setTimeout(() => {
       fetchMoviesData();
@@ -37,41 +40,23 @@ const Home = () => {
   const cancelRetryHandler = () => {
     setRetry(false);
   };
+
   return (
     <div>
       <Heading />
 
-      <main className="container ">
+      <main className="container">
         <h1 className="text-dark mb-4 text-center">Movies</h1>
-        <button onClick={fetchMoviesData}>Fetch Movies</button>
-
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Release Date</th>
-              <th>Title</th>
-              <th>Director</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          {loading && (
-            <div className="loader-center">
-              <Loader />
-            </div>
-          )}
-
-          <div className="Not-Found">
-            {!loading && movies.length === 0 && <div>No Movies Found</div>}
-            {!loading && error && <div>{error}</div>}
-            {retry && (
-              <div>
-                <button onClick={retryHandler}>Retrying</button>
-                <button onClick={cancelRetryHandler}>Cancel</button>
-              </div>
-            )}
-          </div>
-
-          {!loading && (
+        {!loading && !error && movies.length > 0 && (
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Release Date</th>
+                <th>Title</th>
+                <th>Director</th>
+                <th>Action</th>
+              </tr>
+            </thead>
             <tbody>
               {movies.map((data) => (
                 <tr key={data.episode_id}>
@@ -84,8 +69,29 @@ const Home = () => {
                 </tr>
               ))}
             </tbody>
-          )}
-        </table>
+          </table>
+        )}
+        {loading && (
+          <div className="loader-center">
+            <Loader />
+          </div>
+        )}
+
+        {!loading && error && (
+          <div className="Not-Found">
+            <div>{error}</div>
+            {retry && (
+              <div>
+                <button onClick={retryHandler}>Retrying</button>
+                <button onClick={cancelRetryHandler}>Cancel</button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {!loading && !error && movies.length === 0 && (
+          <div className="Not-Found">No Movies Found</div>
+        )}
       </main>
     </div>
   );
