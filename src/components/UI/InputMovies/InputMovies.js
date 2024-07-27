@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 
-const InputMovies = () => {
+const InputMovies = (props) => {
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
   const [director, setDirector] = useState("");
   const addMoviesFormHandler = (e) => {
     e.preventDefault();
-    const MoviesData={
+    const NewMovieObj={
         date:date,
         title:title,
         director:director,
     }
-    console.log(MoviesData)
+    props.addMoviesHandler(NewMovieObj)
   };
   const dateHandler = (e) => {
     setDate(e.target.value);
