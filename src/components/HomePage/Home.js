@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Heading from "../Home/Heading";
 import Loader from "../UI/Loader";
 import "./Home.css";
+import InputMovies from "../UI/InputMovies/InputMovies";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -25,7 +26,7 @@ const Home = () => {
       setRetry(true);
     }
     setLoading(false);
-  },[]);
+  }, []);
 
   useEffect(() => {
     fetchMoviesData();
@@ -44,6 +45,7 @@ const Home = () => {
   return (
     <div>
       <Heading />
+      <InputMovies />
 
       <main className="container">
         <h1 className="text-dark mb-4 text-center">Movies</h1>
