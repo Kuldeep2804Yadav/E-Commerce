@@ -11,7 +11,8 @@ import App from "./App";
 import { ContextProvider } from "./components/ContextApi/Context";
 import About from "./components/About/About";
 import Store from "./components/Store/Store";
-import Home from "./components/HomePage/Home";
+import ContactUs from "./components/Contact/ContactUs";
+
 
 const router = createBrowserRouter([
   {
@@ -22,10 +23,7 @@ const router = createBrowserRouter([
       </ContextProvider>
     ),
     children:[
-      {
-        path:"/home",
-        element:<Home/>
-      },
+  
       {
         path:"/",
         element:<Store/>
@@ -33,6 +31,10 @@ const router = createBrowserRouter([
       {
         path:"/about",
         element:<About/>
+      },
+      {
+        path:"/contactUS",
+        element:<ContactUs/>
       }
     ]
   },

@@ -96,8 +96,10 @@ export const ContextProvider = (props) => {
         cartData: cartData,
         cartCount:cartCount,
         addToCart: addToCart,
+        setCartData:setCartData,
         removeFromCart: removeFromCart,
         totalAmount: totalAmount,
+        setTotalAmount:setTotalAmount,
         setCartCount:setCartCount
 
       }}

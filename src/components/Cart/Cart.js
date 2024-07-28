@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import "./Cart.css";
 import { Context } from "../ContextApi/Context";
 
+
 const Cart = (props) => {
-  const { cartData, totalAmount, removeFromCart,cartCount} = useContext(Context);
+  const { cartData,setCartData,setCartCount, totalAmount,setTotalAmount, removeFromCart} = useContext(Context);
 
   const cartCloseHandler = () => {
     props.setCartOpen(false);
@@ -12,6 +13,13 @@ const Cart = (props) => {
   const removeProducts = (id) => {
     removeFromCart(id);
   };
+  const purchaseHandler=()=>{
+    alert(`SuccessFul Purchase of ${totalAmount} thank You For Shopping`);
+    setCartCount(0);
+   setCartData([]);
+   setTotalAmount(0);
+   
+  }
 
   return (
     <div className="cart">
@@ -28,8 +36,8 @@ const Cart = (props) => {
         <span>QUANTITY</span>
       </div>
       <div className="cart-content">
-        {cartData.map((data, index) => (
-          <div key={index} className="cart-item">
+        {cartData.map((data) => (
+          <div key={data.id} className="cart-item">
             <div className="item">
               <img src={data.imageUrl} alt={data.title} />
               <p>{data.title}</p>
@@ -47,7 +55,7 @@ const Cart = (props) => {
         <span>Total : </span>
         <span>${totalAmount}</span>
       </div>
-      <button className="purchase-button">PURCHASE</button>
+      <button className="purchase-button" onClick={purchaseHandler}>PURCHASE</button>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./About.css";
-import Heading from "../Home/Heading";
+import Heading from "../Heading/Heading";
 
 const About = () => {
   return (

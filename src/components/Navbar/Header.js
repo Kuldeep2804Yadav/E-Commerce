@@ -24,6 +24,9 @@ function Header() {
           <li>
             <NavLink to="./about">ABOUT</NavLink>
           </li>
+          <li>
+            <NavLink to="./contactUs">ContactUS</NavLink>
+          </li>
           
         </ul>
         

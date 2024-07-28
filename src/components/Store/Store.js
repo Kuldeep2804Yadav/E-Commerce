@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 
-import Content from "../Home/Content";
+import Content from "../Heading/Content";
 import "./Store.css";
 import Button from "../UI/Button";
 import Footer from "../Footer/Footer";
 import { Context } from "../ContextApi/Context";
-import Heading from "../Home/Heading";
+import Heading from "../Heading/Heading";
 function Store() {
   const { musicData, merch } = useContext(Context);
   return (
