@@ -9,39 +9,45 @@ export const ContextProvider = (props) => {
       title: "Colors",
       price: 100,
       imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+      review:[]
     },
     {
       id: 2,
       title: "Black and white Colors",
       price: 50,
       imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+      review:[]
     },
     {
       id: 3,
       title: "Yellow and Black Colors",
       price: 70,
       imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+      review:[]
     },
     {
       id: 4,
       title: "Blue Color",
       price: 100,
       imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+      review:[]
     },
   ];
 
   const merch = [
     {
-      id: 1,
+      id: 5,
       title: "T-Shirt",
       price: 19.99,
       imageUrl: "https://yourdesignstore.s3.amazonaws.com/uploads/yds/productImages/full/17155845641871Main-Product-Image-1-1.png",
+      review:[]
     },
     {
-      id: 2,
+      id: 6,
       title: "Coffee",
       price: 19.99,
       imageUrl: "https://www.nescafe.com/mena/sites/default/files/2023-08/Coffee%20Types%20Banner%20Desktop.jpg",
+      review:[]
     },
   ];
 

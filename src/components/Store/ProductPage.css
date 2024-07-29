@@ -1,0 +1,24 @@
+.product-page h2{
+    margin: 20px;
+   
+}
+.product-page{
+    
+}
+.product-page img{
+    margin: 20px;
+    height: 250px;
+    width: 250px;
+}
+.product-reviews{
+    margin: 20px;
+    height: max-content;
+    width: auto;
+    border: 2px solid gray;
+    padding: 20px;
+
+}
+.hr{
+    color: black;
+}
+
