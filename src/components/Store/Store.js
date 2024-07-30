@@ -7,9 +7,12 @@ import { Context } from "../ContextApi/Context";
 import Heading from "../Heading/Heading";
 
 function Store() {
-  const { musicData, merch } = useContext(Context);
+  const { musicData, merch, setCartOpen } = useContext(Context);
   const ContextCtx = useContext(Context);
   ContextCtx.setShowCart(true);
+  const seeTheCartHandler = () => {
+    setCartOpen(true);
+  };
   return (
     <div className="home">
       <Heading />
@@ -29,7 +32,11 @@ function Store() {
             <Content key={data.id} contentData={data} />
           ))}
         </div>
-        <Button title="See The Cart" className="see-Cart text-white"></Button>
+        <Button
+          title="See The Cart"
+          className="see-Cart text-white"
+          onClick={seeTheCartHandler}
+        ></Button>
       </div>
       <Footer />
     </div>

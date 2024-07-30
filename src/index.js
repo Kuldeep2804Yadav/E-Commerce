@@ -9,8 +9,12 @@ import About from "./components/About/About";
 import Store from "./components/Store/Store";
 import ContactUs from "./components/Contact/ContactUs";
 import Login from "./components/Authentication/Login";
+import AuthenticatedRoute from "./components/Authentication/AuthenticateRoute"; 
+import { AuthContextProvider } from "./AuthContext/authContext";
+
 
 const Root = () => (
+  <AuthContextProvider>
   <ContextProvider>
     <Router>
       <Routes>
@@ -19,10 +23,15 @@ const Root = () => (
           <Route path="about" element={<About />} />
           <Route path="contact-us" element={<ContactUs />} />
           <Route path="login" element={<Login />} />
+          <Route element={<AuthenticatedRoute />}>
+            <Route path="products" element={<Store />} /> {/* Protect the Products route */}
+          </Route>
         </Route>
       </Routes>
     </Router>
   </ContextProvider>
+  </AuthContextProvider>
+  
 );
 
 ReactDOM.render(<Root />, document.getElementById("root"));
