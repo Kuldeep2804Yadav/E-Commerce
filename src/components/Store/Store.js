@@ -8,6 +8,8 @@ import Heading from "../Heading/Heading";
 
 function Store() {
   const { musicData, merch } = useContext(Context);
+  const ContextCtx = useContext(Context);
+  ContextCtx.setShowCart(true);
   return (
     <div className="home">
       <Heading />

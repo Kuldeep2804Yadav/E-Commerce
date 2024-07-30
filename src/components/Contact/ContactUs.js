@@ -1,9 +1,12 @@
-import React, {  useState } from "react";
+import React, {  useContext, useState } from "react";
 import "./Contact.css";
 import Heading from "../Heading/Heading";
+import { Context } from "../ContextApi/Context";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
+  const ContextCtx = useContext(Context);
+  ContextCtx.setShowCart(false);
 
   const inputHandler = (e) => {
     const { name, value } = e.target;

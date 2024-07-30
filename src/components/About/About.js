@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./About.css";
 import Heading from "../Heading/Heading";
+import { Context } from "../ContextApi/Context";
 
 const About = () => {
+  const ContextCtx = useContext(Context);
+  ContextCtx.setShowCart(false);
   return (
     <div className="about">
       <Heading />

@@ -54,6 +54,7 @@ export const ContextProvider = (props) => {
   const [cartData, setCartData] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartCount,setCartCount]= useState(0);
+  const [showCart,setShowCart]=useState(false);
 
   const addToCart = (product) => {
     setCartData((prevCart) => {
@@ -106,7 +107,9 @@ export const ContextProvider = (props) => {
         removeFromCart: removeFromCart,
         totalAmount: totalAmount,
         setTotalAmount:setTotalAmount,
-        setCartCount:setCartCount
+        setCartCount:setCartCount,
+        setShowCart:setShowCart,
+        showCart:showCart
 
       }}
     >

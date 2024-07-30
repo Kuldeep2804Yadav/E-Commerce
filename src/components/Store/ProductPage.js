@@ -62,8 +62,8 @@ const ProductPage = () => {
         {product.review &&
           product.review.map((review, index) => (
             <div key={index} className="review">
-            UserName:<h4>{review.user}</h4>
-            Comment: <p> {review.comment}</p>
+            UserName:<h4>{review.userName}</h4>
+            Comment: <p> {review.userComment}</p>
               <hr />
             </div>
           ))}
