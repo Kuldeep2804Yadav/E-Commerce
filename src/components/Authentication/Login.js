@@ -2,11 +2,16 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert, Container, Row, Col } from "react-bootstrap";
 import { Context } from "../ContextApi/Context";
+import { AuthContext } from "../../AuthContext/authContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const { setUserEmail } = useContext(Context);
+  const { setToken } = useContext(AuthContext);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -21,10 +26,12 @@ function Login() {
         }
       );
       const data = await response.json();
-      console.log(data);
       if (response.ok) {
         localStorage.setItem("token", data.idToken);
-       
+        localStorage.setItem("userEmail", email);
+        setToken(data.idToken);
+        setUserEmail(email);
+        navigate("/products"); // Redirect to products page after successful login
       } else {
         setError(data.error?.message || "Login failed");
       }
