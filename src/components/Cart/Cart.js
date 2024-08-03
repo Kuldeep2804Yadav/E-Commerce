@@ -4,7 +4,7 @@ import { Context } from "../ContextApi/Context";
 
 
 const Cart = (props) => {
-  const { cartData,setCartData,setCartCount, totalAmount,setTotalAmount, removeFromCart} = useContext(Context);
+  const { cartData,setCartData, setCartCount,totalAmount,setTotalAmount, removeFromCart} = useContext(Context);
 
   const cartCloseHandler = () => {
     props.setCartOpen(false);

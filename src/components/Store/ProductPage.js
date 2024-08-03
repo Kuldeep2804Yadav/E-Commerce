@@ -38,7 +38,7 @@ const ProductPage = () => {
       <div className="product-images">
         <img src={product.imageUrl} alt={`Product ${product.id}`} />
       </div>
-      <form onSubmit={userformSubmitHandler}>
+      <form onSubmit={userformSubmitHandler} className=" border-3 bg-light mx-lg-3 p-4">
         <p>userName</p>
         <input
           type="text"

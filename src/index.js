@@ -1,37 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import App from "./App";
 import { ContextProvider } from "./components/ContextApi/Context";
-import About from "./components/About/About";
-import Store from "./components/Store/Store";
-import ContactUs from "./components/Contact/ContactUs";
-import Login from "./components/Authentication/Login";
-import AuthenticatedRoute from "./components/Authentication/AuthenticateRoute"; 
-import { AuthContextProvider } from "./AuthContext/authContext";
+import { AuthContextProvider } from "./components/ContextApi/auth-Context";
 
-
-const Root = () => (
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(
   <AuthContextProvider>
-  <ContextProvider>
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="/" element={<Store />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact-us" element={<ContactUs />} />
-          <Route path="login" element={<Login />} />
-          <Route element={<AuthenticatedRoute />}>
-            <Route path="products" element={<Store />} /> {/* Protect the Products route */}
-          </Route>
-        </Route>
-      </Routes>
-    </Router>
-  </ContextProvider>
+    <ContextProvider>
+      <App />
+    </ContextProvider>
   </AuthContextProvider>
-  
 );
-
-ReactDOM.render(<Root />, document.getElementById("root"));

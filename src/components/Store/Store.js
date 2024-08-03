@@ -1,43 +1,56 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Content from "../Heading/Content";
-import "./Store.css";
-import Button from "../UI/Button";
 import Footer from "../Footer/Footer";
 import { Context } from "../ContextApi/Context";
 import Heading from "../Heading/Heading";
 
 function Store() {
-  const { musicData, merch, setCartOpen } = useContext(Context);
-  const ContextCtx = useContext(Context);
-  ContextCtx.setShowCart(true);
+  const { musicData, merch, setCartOpen, setShowCart } = useContext(Context);
+
+  useEffect(() => {
+    setShowCart(true);
+  }, [setShowCart]);
+
   const seeTheCartHandler = () => {
     setCartOpen(true);
   };
+
   return (
     <div className="home">
       <Heading />
 
-      <div className="music">
-        <h1>Music</h1>
-        <div className="content-div">
+      <div className="container my-5">
+        <div className="row mb-4">
+          <div className="col-12 text-center">
+            <h1 className="mb-4">Music</h1>
+          </div>
           {musicData.map((data) => (
-            <Content key={data.id} contentData={data} />
+            <div className="col-md-4 mb-4" key={data.id}>
+              <Content contentData={data} />
+            </div>
           ))}
         </div>
-      </div>
-      <div className="music">
-        <h1>Merch</h1>
-        <div className="content-div">
+
+        <div className="row">
+          <div className="col-12 text-center mb-4">
+            <h1 className="mb-4">Merch</h1>
+          </div>
           {merch.map((data) => (
-            <Content key={data.id} contentData={data} />
+            <div className="col-md-4 mb-4" key={data.id}>
+              <Content contentData={data} />
+            </div>
           ))}
+          <div className="col-12 text-center mt-4">
+            <button
+              className="btn btn-primary"
+              onClick={seeTheCartHandler}
+            >
+              See The Cart
+            </button>
+          </div>
         </div>
-        <Button
-          title="See The Cart"
-          className="see-Cart text-white"
-          onClick={seeTheCartHandler}
-        ></Button>
       </div>
+
       <Footer />
     </div>
   );
